@@ -10,7 +10,10 @@ const LoginForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit(`login: ${login}, password: ${password}`)
+    props.onSubmit({
+      login: login,
+      password: password
+    })
   };
 
   return (
@@ -29,7 +32,7 @@ const LoginForm = (props) => {
         name='password'
         onChange={(e) => setPassword(e.target.value)}
         required/>
-      <button type='submit'>Login</button>
+      <button type='submit'>{props.buttonText}</button>
     </form>
   );
 };
@@ -54,14 +57,14 @@ const App = () => {
         isOpen={openDialog === 'login'}
         aria-label='Login form dialog'
       >
-        <LoginForm onSubmit={handleSubmit}/>
+        <LoginForm onSubmit={handleSubmit} buttonText='Login'/>
       </Dialog>
 
       <Dialog
         isOpen={openDialog === 'register'}
         aria-label='Register form dialog'
       >
-        Register
+        <LoginForm onSubmit={handleSubmit} buttonText='Register'/>
       </Dialog>
     </div>
   );
