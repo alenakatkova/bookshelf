@@ -4,13 +4,13 @@ import { Logo } from './components/logo';
 import { Dialog } from '@reach/dialog';
 import "@reach/dialog/styles.css";
 
-const LoginForm = (props) => {
+const LoginForm = ({onSubmit, buttonText}) => {
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit({
+    onSubmit({
       login: login,
       password: password
     })
@@ -28,11 +28,11 @@ const LoginForm = (props) => {
       <label htmlFor='password'>Password</label>
       <input
         id='password'
-        type='text'
+        type='password'
         name='password'
         onChange={(e) => setPassword(e.target.value)}
         required/>
-      <button type='submit'>{props.buttonText}</button>
+      <button type='submit'>{buttonText}</button>
     </form>
   );
 };
