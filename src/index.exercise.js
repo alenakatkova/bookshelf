@@ -58,6 +58,7 @@ const App = () => {
         aria-label='Login form dialog'
       >
         <LoginForm onSubmit={handleSubmit} buttonText='Login'/>
+        <button onClick={() => setOpenDialog('none')}>Close</button>
       </Dialog>
 
       <Dialog
@@ -65,6 +66,7 @@ const App = () => {
         aria-label='Register form dialog'
       >
         <LoginForm onSubmit={handleSubmit} buttonText='Register'/>
+        <button onClick={() => setOpenDialog('none')}>Close</button>
       </Dialog>
     </div>
   );
