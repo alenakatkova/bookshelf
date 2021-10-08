@@ -4,8 +4,42 @@ import { Logo } from './components/logo';
 import { Dialog } from '@reach/dialog';
 import "@reach/dialog/styles.css";
 
+const LoginForm = (props) => {
+  const [login, setLogin] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onSubmit(`login: ${login}, password: ${password}`)
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor='login'>Login</label>
+      <input
+        id='login'
+        type='text'
+        name='login'
+        onChange={(e) => setLogin(e.target.value)}
+        required />
+      <label htmlFor='password'>Password</label>
+      <input
+        id='password'
+        type='text'
+        name='password'
+        onChange={(e) => setPassword(e.target.value)}
+        required/>
+      <button type='submit'>Login</button>
+    </form>
+  );
+};
+
 const App = () => {
   const [openDialog, setOpenDialog] = React.useState('none');
+
+  const handleSubmit = (formData) => {
+    console.log(formData);
+  };
 
   return (
     <div>
@@ -20,7 +54,7 @@ const App = () => {
         isOpen={openDialog === 'login'}
         aria-label='Login form dialog'
       >
-        Login
+        <LoginForm onSubmit={handleSubmit}/>
       </Dialog>
 
       <Dialog
