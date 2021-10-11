@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap-reboot.css'
 import '@reach/dialog/styles.css'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import {Button, FormGroup, Input} from './components/lib'
+import {Button, Input, FormGroup} from './components/lib'
 import {Modal, ModalContents, ModalOpenButton} from './components/modal'
 import {Logo} from './components/logo'
 
@@ -30,7 +30,7 @@ function LoginForm({onSubmit, submitButton}) {
           margin: '10px auto',
           width: '100%',
           maxWidth: '300px',
-        }
+        },
       }}
       onSubmit={handleSubmit}
     >
