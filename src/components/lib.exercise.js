@@ -1,6 +1,19 @@
 import styled from '@emotion/styled'
 import {Dialog as ReachDialog} from '@reach/dialog'
 
+const Button = styled.button(
+  {
+    padding: '10px 15px',
+    border: '0',
+    lineHeight: '1',
+    borderRadius: '3px',
+    cursor: 'pointer'
+  },
+  props => ({
+    background: props.variant === 'primary' ? '#3f51b5' : '#f1f2f7',
+    color: props.variant === 'primary' ? 'white' : '#434449',
+  })
+)
 // 🐨 create a button styled component here called "Button"
 // make it look nice and allow it to support a "variant" prop which can be
 // either "primary" or "secondary".
@@ -68,4 +81,4 @@ const Dialog = styled(ReachDialog)({
   },
 })
 
-export {CircleButton, Dialog}
+export {CircleButton, Dialog, Button}

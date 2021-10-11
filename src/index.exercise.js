@@ -1,3 +1,6 @@
+/** @jsx jsx */
+import {jsx} from '@emotion/core'
+
 // 🐨 make sure to add the comment and import jsx from @emotion/core
 // up here so you can use the css prop
 
@@ -12,6 +15,7 @@ import * as React from 'react'
 import ReactDOM from 'react-dom'
 // 🐨 you'll need to import some new components that you'll be creating
 // in this file
+import {Button} from './components/lib'
 // import {Button, Input, FormGroup} from './components/lib'
 import {Modal, ModalContents, ModalOpenButton} from './components/modal'
 import {Logo} from './components/logo'
@@ -86,7 +90,7 @@ function App() {
       <div>
         <Modal>
           <ModalOpenButton>
-            <button variant="primary">Login</button>
+            <Button variant="primary">Login</Button>
           </ModalOpenButton>
           <ModalContents aria-label="Login form" title="Login">
             <LoginForm
@@ -97,7 +101,7 @@ function App() {
         </Modal>
         <Modal>
           <ModalOpenButton>
-            <button variant="secondary">Register</button>
+            <Button variant="secondary">Register</Button>
           </ModalOpenButton>
           <ModalContents aria-label="Registration form" title="Register">
             <LoginForm
