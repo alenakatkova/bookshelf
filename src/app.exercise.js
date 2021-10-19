@@ -3,9 +3,9 @@ import {jsx} from '@emotion/core'
 
 import * as React from 'react'
 import * as auth from 'auth-provider'
+import {FullPageSpinner} from './components/lib'
 import * as colors from './styles/colors'
 import {client} from './utils/api-client'
-import {FullPageSpinner} from './components/lib'
 import {useAsync} from './utils/hooks'
 import {AuthenticatedApp} from './authenticated-app'
 import {UnauthenticatedApp} from './unauthenticated-app'
@@ -24,12 +24,12 @@ async function getUser() {
 
 function App() {
   const {
-    data,
+    data: user,
     error,
-    isIdle,
     isLoading,
-    isSuccess,
+    isIdle,
     isError,
+    isSuccess,
     run,
     setData,
   } = useAsync()
@@ -38,8 +38,8 @@ function App() {
     run(getUser())
   }, [run])
 
-  const login = form => auth.login(form).then(u => setData(u))
-  const register = form => auth.register(form).then(u => setData(u))
+  const login = form => auth.login(form).then(user => setData(user))
+  const register = form => auth.register(form).then(user => setData(user))
   const logout = () => {
     auth.logout()
     setData(null)
@@ -68,8 +68,8 @@ function App() {
   }
 
   if (isSuccess) {
-    return data ? (
-      <AuthenticatedApp user={data} logout={logout} />
+    return user ? (
+      <AuthenticatedApp user={user} logout={logout} />
     ) : (
       <UnauthenticatedApp login={login} register={register} />
     )
